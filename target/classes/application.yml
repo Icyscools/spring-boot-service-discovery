@@ -1,0 +1,19 @@
+server:
+  port: 8432
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka
+
+zuul:
+  routes:
+    euraka:
+      path: /euraka/**
+      url: https://localhost:${server.port}
+  debug:
+    request: true
